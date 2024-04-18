@@ -14,9 +14,13 @@ datasource db {
 }
 
 model User {
-  id    Int    @id @default(autoincrement())
-  name  String?
-  posts Post[]
+  id           Int    @id @default(autoincrement())
+  name         String?
+  email        String    @unique
+  password     String    // Store hashed passwords
+  refreshToken String?   // Store refresh tokens if using refresh token-based authentication
+  accessToken  String?   // Store access tokens if needed
+  posts        Post[]
 }
 
 model Post {
