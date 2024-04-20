@@ -88,4 +88,23 @@ export class AuthService {
       data: { refreshToken: null, accessToken: null },
     });
   }
+
+  async profile(userId: number) {
+    const user = await this.prisma.user.findUnique({ where: { id: userId } });
+    if (!user) {
+      throw new HttpException(
+        {
+          success: false,
+          error: 'User not found',
+        },
+        HttpStatus.NOT_FOUND,
+      );
+    }
+
+    return {
+      name: user.name,
+      email: user.email,
+      accessToken: user.accessToken,
+    };
+  }
 }
