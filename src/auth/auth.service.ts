@@ -69,7 +69,11 @@ export class AuthService {
       data: { accessToken },
     });
 
-    return { name: user.name, email: user.email, accessToken: accessToken };
+    return {
+      username: user.username,
+      email: user.email,
+      accessToken: accessToken,
+    };
   }
 
   async signOut(userId: number): Promise<void> {
@@ -102,7 +106,7 @@ export class AuthService {
     }
 
     return {
-      name: user.name,
+      username: user.username,
       email: user.email,
       accessToken: user.accessToken,
     };
