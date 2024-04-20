@@ -5,7 +5,6 @@ import {
   Get,
   Delete,
   Param,
-  Request,
   UseGuards,
   ParseIntPipe,
 } from '@nestjs/common';
