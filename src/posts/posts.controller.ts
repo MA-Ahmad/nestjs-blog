@@ -9,9 +9,9 @@ import {
   Req,
 } from '@nestjs/common';
 import { PostsService } from './posts.service';
-import { PostDto } from './dto/post.dto';
 import { Post as PostModel } from '@prisma/client';
 import { Public } from 'src/decorators/public.decorator';
+import { PostDto } from './dto/post.dto';
 
 @Controller('posts')
 export class PostsController {
