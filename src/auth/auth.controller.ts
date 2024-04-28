@@ -5,12 +5,10 @@ import {
   Get,
   Delete,
   Param,
-  UseGuards,
   ParseIntPipe,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { SignInDto, SignupDto } from './dto/auth.dto';
-import { AuthGuard } from './auth.guard';
 import { Public } from 'src/decorators/public.decorator';
 
 @Controller('auth')
@@ -35,7 +33,7 @@ export class AuthController {
     return { message: 'Logout Successfully' };
   }
 
-  @UseGuards(AuthGuard)
+  // @UseGuards(AuthGuard)
   @Get('profile/:userId')
   getProfile(@Param('userId', ParseIntPipe) userId: number) {
     return this.authService.profile(userId);
